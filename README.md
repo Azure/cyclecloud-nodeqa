@@ -1,14 +1,27 @@
-# Project
+# Azure Cyclecloud Node QA
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This project will qualify individual nodes before they join a cluster. 
 
-As the maintainer of this project, please make a few updates:
+For failing nodes you may see something like this in the message queue:
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+```Log
+Cyclecloud-NodeQA (NodeName:hpc-pg0-1/Hostname:ip-0A010A06/VMId:af4d08e9-1273-4bfc-babc-84a6a9e19c71) 
+Cyclecloud-NodeQA ERROR: Device 0 measured 21.8 GB/s BW, expected 23 
+Cyclecloud-NodeQA ERROR: Device 1 measured 21.8 GB/s BW, expected 23 
+Cyclecloud-NodeQA ERROR: Device 2 measured 21.7 GB/s BW, expected 23 
+Cyclecloud-NodeQA ERROR: Device 3 measured 21.7 GB/s BW, expected 23 
+Cyclecloud-NodeQA ERROR: Device 4 measured 21.8 GB/s BW, expected 23 
+Cyclecloud-NodeQA ERROR: Device 5 measured 21.8 GB/s BW, expected 23 
+Cyclecloud-NodeQA ERROR: Device 6 measured 21.8 GB/s BW, expected 23 
+Cyclecloud-NodeQA ERROR: Device 7 measured 21.8 GB/s BW, expected 23
+```
+
+The VM metadata will be written to a file on the node `/tmp/NodeQA` but 
+will only be available for short amount of time because this project will
+delete failing nodes.
+
+Manually started nodes will be removed. Nodes that are autoscaled will 
+be replaced but manually added nodes will not.
 
 ## Contributing
 

@@ -28,11 +28,11 @@ def initlog(logfile=None, level=None, log_stdout=True):
                   'critical': logging.CRITICAL}
     log = logging.getLogger()
     if level not in log_levels:
-        print "ERROR: Invalid log level specified"
-        print "ERROR: Try to use the default one: debug"
+        print("ERROR: Invalid log level specified")
+        print("ERROR: Try to use the default one: debug")
         level = 'debug'
     if logfile is None and not log_stdout:
-        print "ERROR: At least one of logfile and log_stdout is required"
+        print("ERROR: At least one of logfile and log_stdout is required")
         raise Exception('Specify logfile or log_stdout for logging')
     log_level = log_levels.get(level, logging.NOTSET)
     log.setLevel(log_level)
